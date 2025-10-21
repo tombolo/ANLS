@@ -1,0 +1,96 @@
+/* Progress Bar Animation */
+@keyframes progressBarGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(192, 132, 252, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(192, 132, 252, 0.5);
+  }
+}
+
+.progress-bar-animate {
+  animation: progressBarGlow 2s infinite ease-in-out;
+}
+
+/* Progress Bar Container */
+.progress-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Progress Bar Fill */
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8a2be2, #ff007f);
+  border-radius: 10px;
+  position: relative;
+  transition: width 1s ease-out;
+}
+
+/* Glow Effect */
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), transparent);
+  opacity: 0;
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Glow Animation */
+@keyframes glow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Add Pulse Animation to Progress Bar */
+.progress-bar-container:hover .progress-bar-fill {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Flip Animation */
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(0);
+  }
+  50% {
+    transform: perspective(400px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(360deg);
+  }
+}
+
+.animate-flip {
+  animation: flip 6s infinite ease-in-out;
+}
